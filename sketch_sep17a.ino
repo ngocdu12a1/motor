@@ -22,7 +22,7 @@ int sensor[5] = {0, 0, 0, 0, 0}; // giữ giá trị cảm biến đọc vào
 
 //
 float  error = 0, P = 0, I = 0, D = 0, PID_value = 0, previous_error = 0;
-float  Kp = 35, Ki = 0.1, Kd = 15;
+float  Kp = 21, Ki = 0, Kd = 4;
 int speed_motor = 100, left_speed = 0, right_speed = 0;
 
 int ardprintf(char *, ...);
@@ -101,7 +101,7 @@ void calculate_PID(){
     I = I + error;
     D = error - previous_error;
 
-    PID_value = Kd * P + Ki * I + Kd * D;
+    PID_value = Kp * P + Ki * I + Kd * D;
     previous_error = error;
 }
 
